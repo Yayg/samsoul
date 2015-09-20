@@ -1,5 +1,3 @@
-#! /us/bin/env python
-
 class logging:
     def error(self, error_id, msg):
         print("samsoul: " + msg)

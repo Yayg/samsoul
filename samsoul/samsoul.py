@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3.4
 
 """
 Usage:
@@ -48,11 +48,11 @@ def run():
             sys.exit(1)
         config = get_conf(config_file)
 
-    ns = Protocol()
+    protocol = Protocol(config)
 
     # Netsoul deamon
     if args['-s']:
-        print(ns.data)
+        print(protocol.data)
     # Netsoul commands
     elif args['-u']:
         if args['<login>']:
@@ -60,7 +60,12 @@ def run():
         else:
             raise NotImplementedError
     elif args['-i']:
-        SamsoulCmd(ns).cmdloop()
+        while True:
+            try:
+                SamsoulCmd(protocol).cmdloop()
+                break
+            except KeyboardInterrupt:
+                print("Hey it hurts, please use Ctrl+D to escape.")
 
 
 if __name__ == '__main__':

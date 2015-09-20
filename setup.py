@@ -24,6 +24,8 @@ setup(
     install_requires=[
         'docopt',
         'requests',
+        'texttable',
+        'prettytable',
     ],
 
     entry_points={
